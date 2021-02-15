@@ -1,0 +1,12 @@
+Package: appler
+Type: Package
+Title: Apple iTunes Search API
+Version: 0.1.0
+Authors@R: person("Ashley", "Baldry", email = "arbaldry91@gmail.com", role = c("aut", "cre"))
+Description: Wrappers behind Apple's iTunes search API.
+Imports: httr, jsonlite, rvest
+Suggests: testthat (>= 3.0.0)
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
