@@ -22,9 +22,19 @@ testthat::test_that("Pulling the top 25 results from a search returns data.frame
   testthat::expect_equal(res$artistName[1], "Jack Johnson")
 })
 
-testthat::test_that("Non-existent term returns `NULL`", {
-  res <- search_apple("fdjksdgjdsknjfkcdzsjdgnfkmsdnjfdksd")
+testthat::test_that("Invalid limit returns error", {
+  testthat::expect_error(search_apple("Jack Johnson", limit = 500))
+})
 
-  testthat::expect_null(res)
+testthat::test_that("Invalid media returns error", {
+  testthat::expect_error(search_apple("Jack Johnson", media = "fdhjkfd"))
+})
+
+testthat::test_that("Invalid attribute returns error", {
+  testthat::expect_error(search_apple("Jack Johnson", attribute = "fdhjkfd"))
+})
+
+testthat::test_that("Non-existent term returns `NULL`", {
+  testthat::expect_null(search_apple("fdjksdgjdsknjfkcdzsjdgnfkmsdnjfdksd"))
 })
 
