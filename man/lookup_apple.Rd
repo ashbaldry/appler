@@ -6,24 +6,15 @@
 \usage{
 lookup_apple(
   id,
-  id_type = "id",
   country = NULL,
   entity = NULL,
   limit = NULL,
-  sort = NULL
+  sort = NULL,
+  id_type = "id"
 )
 }
 \arguments{
 \item{id}{The ID of the iTunes entity}
-
-\item{id_type}{The ID type to lookup, options are:
-\describe{
-\item{\code{id}}{The default iTunes ID}
-\item{\code{amgArtistId}}{AMG Artist ID}
-\item{\code{amgAlbumId}}{AMG Album ID}
-\item{\code{upc}}{UPC Album or Video ID}
-\item{\code{isbn}}{ISB Book ID}
-}}
 
 \item{country}{The two-letter country code for the store you want to search.
 For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1_alpha-2}}
@@ -34,6 +25,15 @@ For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1
 The default is 50.}
 
 \item{sort}{\code{Optional} The order the results are returned, for most recent first select \code{recent}.}
+
+\item{id_type}{The ID type to lookup, options are:
+\describe{
+\item{\code{id}}{The default iTunes ID}
+\item{\code{amgArtistId}}{AMG Artist ID}
+\item{\code{amgAlbumId}}{AMG Album ID}
+\item{\code{upc}}{UPC Album or Video ID}
+\item{\code{isbn}}{ISB Book ID}
+}}
 }
 \value{
 A \code{data.frame} of any results that match the iTunes database.

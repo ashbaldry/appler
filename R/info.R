@@ -72,8 +72,8 @@ search_apple <- function(term, country = NULL, media = NULL, entity = NULL, attr
     explicit = explicit
   )
 
-  res <- httr::GET("https://itunes.apple.com/search", query = query)
-  httr::http_error(req)
+  req <- httr::GET("https://itunes.apple.com/search", query = query)
+  httr::stop_for_status(req)
 
   res <- jsonlite::fromJSON(httr::content(req))
   if (res$resultCount == 0) NULL else res$results
@@ -86,6 +86,12 @@ search_apple <- function(term, country = NULL, media = NULL, entity = NULL, attr
 #' and All Music Guide (AMG) IDs. ID-based lookups are faster and contain fewer false-positive results.
 #'
 #' @param id The ID of the iTunes entity
+#' @param country The two-letter country code for the store you want to search.
+#' For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1_alpha-2}
+#' @param entity \code{Optional} The type of results you want returned, relative to the specified media type.
+#' @param limit \code{Optional} The number of search results you want the iTunes Store to return between 1 and 200.
+#' The default is 50.
+#' @param sort \code{Optional} The order the results are returned, for most recent first select \code{recent}.
 #' @param id_type The ID type to lookup, options are:
 #' \describe{
 #' \item{\code{id}}{The default iTunes ID}
@@ -94,12 +100,6 @@ search_apple <- function(term, country = NULL, media = NULL, entity = NULL, attr
 #' \item{\code{upc}}{UPC Album or Video ID}
 #' \item{\code{isbn}}{ISB Book ID}
 #' }
-#' @param country The two-letter country code for the store you want to search.
-#' For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1_alpha-2}
-#' @param entity \code{Optional} The type of results you want returned, relative to the specified media type.
-#' @param limit \code{Optional} The number of search results you want the iTunes Store to return between 1 and 200.
-#' The default is 50.
-#' @param sort \code{Optional} The order the results are returned, for most recent first select \code{recent}.
 #'
 #' @return
 #' A \code{data.frame} of any results that match the iTunes database.
@@ -116,7 +116,7 @@ search_apple <- function(term, country = NULL, media = NULL, entity = NULL, attr
 #' @seealso \url{https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/}
 #'
 #' @export
-lookup_apple <- function(id, id_type = "id", country = NULL, entity = NULL, limit = NULL, sort = NULL) {
+lookup_apple <- function(id, country = NULL, entity = NULL, limit = NULL, sort = NULL, id_type = "id") {
   if (!is.null(limit) && !limit %in% seq(200)) stop("Limit must be between 1 and 200")
   if (!is.null(entity)) {
     if (!all(entity %in% entities[["all"]]))
@@ -136,7 +136,7 @@ lookup_apple <- function(id, id_type = "id", country = NULL, entity = NULL, limi
   names(query)[1] <- id_type
 
   req <- httr::GET("https://itunes.apple.com/lookup", query = query)
-  httr::http_error(req)
+  httr::stop_for_status(req)
 
   res <- jsonlite::fromJSON(httr::content(req))
   if (res$resultCount == 0) NULL else res$results

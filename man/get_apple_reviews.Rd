@@ -4,13 +4,17 @@
 \alias{get_apple_reviews}
 \title{Apple Store Reviews}
 \usage{
-get_apple_reviews(id, country = "us")
+get_apple_reviews(id, country = "us", all_results = FALSE, page_no = 1)
 }
 \arguments{
 \item{id}{The ID of the iTunes entity}
 
 \item{country}{The two-letter country code for the store you want to search.
 For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1_alpha-2}}
+
+\item{all_results}{Logical, would you like all possible reviews to be pulled?}
+
+\item{page_no}{If \code{page_no = FALSE} then the page of reviews to pull. Defaults to most recent.}
 }
 \value{
 A \code{data.frame} of any results that match the iTunes database.
@@ -18,7 +22,7 @@ A \code{data.frame} of any results that match the iTunes database.
 If there were no successful results then it will return \code{NULL}.
 }
 \description{
-Using Apple's iTunes API, will extract the information about a selected
+Using Apple's RSS feed, will extract the information about a selected
 }
 \examples{
 # Look up Jack Johnson by iTunes artist ID
