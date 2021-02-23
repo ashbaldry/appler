@@ -21,9 +21,6 @@
 #' # Look up reviews for in the UK
 #' get_apple_reviews(979274575, "gb")
 #'
-#' # Look up all reviews for Apollo in the UK
-#' get_apple_reviews(979274575, "gb", all_results = TRUE)
-#'
 #' @export
 get_apple_reviews <- function(id, country = "us", all_results = FALSE, page_no = 1) {
   if (nchar(country) != 2) stop("Country must be a 2 digit ISO code")

@@ -31,7 +31,4 @@ There is a maximum of 500 reviews that can be pulled.
 # Look up reviews for in the UK
 get_apple_reviews(979274575, "gb")
 
-# Look up all reviews for Apollo in the UK
-get_apple_reviews(979274575, "gb", all_results = TRUE)
-
 }
