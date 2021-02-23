@@ -4,6 +4,9 @@ Title: Apple iTunes Search API
 Version: 0.1.0
 Authors@R: person("Ashley", "Baldry", email = "arbaldry91@gmail.com", role = c("aut", "cre"))
 Description: Wrappers behind Apple's iTunes search API.
+URL: https://github.com/ashbaldry/appler, 
+    https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/
+BugReport: https://github.com/ashbaldry/appler/issues
 Imports: httr, jsonlite, rvest, glue, xml2, lubridate
 Suggests: testthat (>= 3.0.0)
 License: GPL-3

@@ -17,21 +17,21 @@ For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1
 \item{page_no}{If \code{page_no = FALSE} then the page of reviews to pull. Defaults to most recent.}
 }
 \value{
-A \code{data.frame} of any results that match the iTunes database.
+A \code{data.frame} of the extracted reviews.
 
-If there were no successful results then it will return \code{NULL}.
+If there were no reviews then it will return \code{NULL}.
 }
 \description{
 Using Apple's RSS feed, will extract the information about a selected
 }
-\examples{
-# Look up Jack Johnson by iTunes artist ID
-lookup_apple(909253)
-
-# Look up Jack Johnson by AMG artist ID
-lookup_apple(468749, "amgArtistId")
-
+\details{
+There is a maximum of 500 reviews that can be pulled.
 }
-\seealso{
-\url{https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/}
+\examples{
+# Look up reviews for in the UK
+get_apple_reviews(979274575, "gb")
+
+# Look up all reviews for Apollo in the UK
+get_apple_reviews(979274575, "gb", all_results = TRUE)
+
 }

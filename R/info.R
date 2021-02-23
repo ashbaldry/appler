@@ -12,8 +12,8 @@
 #' @param attribute \code{Optional}	The attribute you want to search for in the stores, relative to the specified
 #' media type. For example, if you want to search for an artist by name specify
 #' \code{entity=allArtist&attribute=allArtistTerm}. In this example, if you search for term=maroon, iTunes
-#' returns “Maroon 5” in the search results, instead of all artists who have ever recorded a song with the
-#' word “maroon” in the title.
+#' returns "Maroon 5" in the search results, instead of all artists who have ever recorded a song with the
+#' word "maroon" in the title.
 #' @param limit \code{Optional} The number of search results you want the iTunes Store to return between 1 and 200.
 #' The default is 50.
 #' @param lang \code{Optional} The language, English or Japanese, you want to use when returning search results.
@@ -21,6 +21,9 @@
 #' in your search results.
 #'
 #' @return
+#' A \code{data.frame} of any results that match the iTunes database.
+#'
+#' If there were no successful results then it will return \code{NULL}.
 #'
 #' @examples
 #' # Search for all Jack Johnson audio and video content
@@ -111,7 +114,7 @@ search_apple <- function(term, country = NULL, media = NULL, entity = NULL, attr
 #' lookup_apple(909253)
 #'
 #' # Look up Jack Johnson by AMG artist ID
-#' lookup_apple(468749, "amgArtistId")
+#' lookup_apple(468749, id_type = "amgArtistId")
 #'
 #' @seealso \url{https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/}
 #'

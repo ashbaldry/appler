@@ -10,18 +10,19 @@
 #' @param page_no If \code{page_no = FALSE} then the page of reviews to pull. Defaults to most recent.
 #'
 #' @return
-#' A \code{data.frame} of any results that match the iTunes database.
+#' A \code{data.frame} of the extracted reviews.
 #'
-#' If there were no successful results then it will return \code{NULL}.
+#' If there were no reviews then it will return \code{NULL}.
+#'
+#' @details
+#' There is a maximum of 500 reviews that can be pulled.
 #'
 #' @examples
-#' # Look up Jack Johnson by iTunes artist ID
-#' lookup_apple(909253)
+#' # Look up reviews for in the UK
+#' get_apple_reviews(979274575, "gb")
 #'
-#' # Look up Jack Johnson by AMG artist ID
-#' lookup_apple(468749, "amgArtistId")
-#'
-#' @seealso \url{https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/}
+#' # Look up all reviews for Apollo in the UK
+#' get_apple_reviews(979274575, "gb", all_results = TRUE)
 #'
 #' @export
 get_apple_reviews <- function(id, country = "us", all_results = FALSE, page_no = 1) {

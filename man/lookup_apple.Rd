@@ -49,7 +49,7 @@ and All Music Guide (AMG) IDs. ID-based lookups are faster and contain fewer fal
 lookup_apple(909253)
 
 # Look up Jack Johnson by AMG artist ID
-lookup_apple(468749, "amgArtistId")
+lookup_apple(468749, id_type = "amgArtistId")
 
 }
 \seealso{

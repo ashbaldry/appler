@@ -12,6 +12,10 @@
 #'
 #' @return A 5 row data.frame with the split of 1-5 stars given
 #'
+#' @examples
+#' # Look up ratings split for Apollo in the UK
+#' get_apple_rating_split(979274575, "gb")
+#'
 #' @export
 get_apple_rating_split <- function(id, country = "us") {
   if (nchar(country) != 2) stop("Country must be a 2 digit ISO code")
