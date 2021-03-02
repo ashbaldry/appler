@@ -32,6 +32,6 @@ get_apple_chart_postion <- function(id, country) {
 
   list(
     position = as.numeric(gsub("[^0-9]+", "\\1", position_text)),
-    category = gsub(".*\\d+ [a-zA-z]+ (\\w+)\n.*", "\\1", position_text)
+    category = gsub(".*\\d+ [a-zA-Z]+ (\\w+(| \\w+)+)\n.*", "\\1", position_text)
   )
 }

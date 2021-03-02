@@ -1,0 +1,73 @@
+---
+title: ## `appler`
+output: md_document
+---
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/ashbaldry/appler/workflows/R-CMD-check/badge.svg)](https://github.com/ashbaldry/appler/actions)
+[![Codecov test coverage](https://codecov.io/gh/ashbaldry/appler/branch/main/graph/badge.svg)](https://codecov.io/gh/ashbaldry/appler?branch=main)
+<!-- badges: end -->
+
+
+The goal of `appler` is to be able to pull information from the Apple iTunes and App Stores.
+
+### Installation
+
+```{r, eval=FALSE}
+devtools::install_github("ashbaldry/appler")
+```
+
+### Functionality
+
+```{r}
+library(appler)
+```
+
+#### `search_apple` 
+
+A simple search tool that returns Apple items that are related to the search term.
+
+```{r}
+search_results <- search_apple("GitHub", "gb")
+dim(search_results)
+names(search_results)
+```
+
+#### `lookup_apple`
+
+Using the ID of an Apple item (found in the URL) returns basic information about the selected item.
+
+```{r}
+lookup_results <- lookup_apple(1477376905, "gb")
+dim(lookup_results)
+names(lookup_results)
+```
+
+#### `get_apple_rating_split`
+
+The API only extracts the average review, so this scrapes the app page for the split of 1 :star: to 5 :star: ratings.
+
+```{r}
+ratings <- get_apple_rating_split(1477376905, "gb")
+ratings
+```
+
+#### `get_apple_reviews`
+
+Pulls the most recent reviews for a selected app.
+
+```{r}
+reviews <- get_apple_reviews(1477376905, "gb")
+head(reviews[-1, ])
+```
+
+#### `get_apple_chart_postion`
+
+Checks whether the app is within any category chart and returns the postion and category
+
+```{r}
+chart_pos <- get_apple_chart_postion(1477376905, "gb")
+chart_pos
+```
+
+__NB__ All ratings and reviews are country specific.
