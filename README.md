@@ -1,8 +1,7 @@
-<!-- badges: start -->
+## `appler`
 
+<!-- badges: start -->
 [![R-CMD-check](https://github.com/ashbaldry/appler/workflows/R-CMD-check/badge.svg)](https://github.com/ashbaldry/appler/actions)
-[![Codecov test
-coverage](https://codecov.io/gh/ashbaldry/appler/branch/main/graph/badge.svg)](https://codecov.io/gh/ashbaldry/appler?branch=main)
 <!-- badges: end -->
 
 The goal of `appler` is to be able to pull information from the Apple
