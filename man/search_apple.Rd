@@ -46,7 +46,7 @@ A \code{data.frame} of any results that match the iTunes database.
 If there were no successful results then it will return \code{NULL}.
 }
 \description{
-Using Apple's iTunes API, will extract the information about a selected
+Using Apple's iTunes API, will find any content available from Apple based on a given search term.
 }
 \examples{
 # Search for all Jack Johnson audio and video content

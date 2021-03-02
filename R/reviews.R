@@ -1,9 +1,9 @@
-#' Apple Store Reviews
+#' Apple App Store Reviews
 #'
 #' @description
-#' Using Apple's RSS feed, will extract the information about a selected
+#' Using Apple's RSS feed, will extract the reviews from a specific country for the desired application.
 #'
-#' @param id The ID of the iTunes entity
+#' @param id The ID of the App on the Apple App Store
 #' @param country The two-letter country code for the store you want to search.
 #' For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1_alpha-2}
 #' @param all_results Logical, would you like all possible reviews to be pulled?
@@ -18,7 +18,7 @@
 #' There is a maximum of 500 reviews that can be pulled.
 #'
 #' @examples
-#' # Look up reviews for in the UK
+#' # Look up reviews for Apollo in the UK
 #' get_apple_reviews(979274575, "gb")
 #'
 #' @export

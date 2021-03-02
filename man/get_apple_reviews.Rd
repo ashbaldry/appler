@@ -2,12 +2,12 @@
 % Please edit documentation in R/reviews.R
 \name{get_apple_reviews}
 \alias{get_apple_reviews}
-\title{Apple Store Reviews}
+\title{Apple App Store Reviews}
 \usage{
 get_apple_reviews(id, country = "us", all_results = FALSE, page_no = 1)
 }
 \arguments{
-\item{id}{The ID of the iTunes entity}
+\item{id}{The ID of the App on the Apple App Store}
 
 \item{country}{The two-letter country code for the store you want to search.
 For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1_alpha-2}}
@@ -22,13 +22,13 @@ A \code{data.frame} of the extracted reviews.
 If there were no reviews then it will return \code{NULL}.
 }
 \description{
-Using Apple's RSS feed, will extract the information about a selected
+Using Apple's RSS feed, will extract the reviews from a specific country for the desired application.
 }
 \details{
 There is a maximum of 500 reviews that can be pulled.
 }
 \examples{
-# Look up reviews for in the UK
+# Look up reviews for Apollo in the UK
 get_apple_reviews(979274575, "gb")
 
 }

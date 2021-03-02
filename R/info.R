@@ -1,7 +1,7 @@
 #' Apple Store Search
 #'
 #' @description
-#' Using Apple's iTunes API, will extract the information about a selected
+#' Using Apple's iTunes API, will find any content available from Apple based on a given search term.
 #'
 #' @param term The URL-encoded text string you want to search for. For example: \code{jack+johnson}.
 #' If using a vector it will search for all terms in one search.
