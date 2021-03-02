@@ -1,7 +1,9 @@
 ## `appler`
 
 <!-- badges: start -->
+
 [![R-CMD-check](https://github.com/ashbaldry/appler/workflows/R-CMD-check/badge.svg)](https://github.com/ashbaldry/appler/actions)
+<!-- [![Codecov test coverage](https://codecov.io/gh/ashbaldry/appler/branch/main/graph/badge.svg)](https://codecov.io/gh/ashbaldry/appler?branch=main) -->
 <!-- badges: end -->
 
 The goal of `appler` is to be able to pull information from the Apple
@@ -97,7 +99,7 @@ for the split of 1 :star: to 5 :star: ratings.
 Pulls the most recent reviews for a selected app.
 
     reviews <- get_apple_reviews(1477376905, "gb")
-    head(reviews[-1, ])
+    head(reviews)
 
     ##           id         review_time         author app_version
     ## 2 6995723328 2021-02-15 03:10:28  Max Hitchings       1.4.2
@@ -124,7 +126,7 @@ Pulls the most recent reviews for a selected app.
 #### `get_apple_chart_postion`
 
 Checks whether the app is within any category chart and returns the
-postion and category
+position and category
 
     chart_pos <- get_apple_chart_postion(1477376905, "gb")
     chart_pos
