@@ -20,7 +20,7 @@ search_apple(
 If using a vector it will search for all terms in one search.}
 
 \item{country}{The two-letter country code for the store you want to search.
-For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1_alpha-2}}
+For a list of country codes see \url{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}}
 
 \item{media}{\code{Optional} The media type you want to search for. For example: movie. The default is all.}
 

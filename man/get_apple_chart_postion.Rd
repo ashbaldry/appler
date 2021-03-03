@@ -10,7 +10,7 @@ get_apple_chart_postion(id, country)
 \item{id}{The ID of the App on the Apple App Store}
 
 \item{country}{The two-letter country code for the store you want to search.
-For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1_alpha-2}}
+For a list of country codes see \url{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}}
 }
 \value{
 A list of two, containing the position and the category of the App if available. Otherwise both will be \code{NA}

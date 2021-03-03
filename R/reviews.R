@@ -5,7 +5,7 @@
 #'
 #' @param id The ID of the App on the Apple App Store
 #' @param country The two-letter country code for the store you want to search.
-#' For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1_alpha-2}
+#' For a list of country codes see \url{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}
 #' @param all_results Logical, would you like all possible reviews to be pulled?
 #' @param page_no If \code{page_no = FALSE} then the page of reviews to pull. Defaults to most recent.
 #'

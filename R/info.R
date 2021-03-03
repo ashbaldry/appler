@@ -6,7 +6,7 @@
 #' @param term The URL-encoded text string you want to search for. For example: \code{jack+johnson}.
 #' If using a vector it will search for all terms in one search.
 #' @param country The two-letter country code for the store you want to search.
-#' For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1_alpha-2}
+#' For a list of country codes see \url{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}
 #' @param media \code{Optional} The media type you want to search for. For example: movie. The default is all.
 #' @param entity \code{Optional} The type of results you want returned, relative to the specified media type.
 #' @param attribute \code{Optional}	The attribute you want to search for in the stores, relative to the specified
@@ -90,7 +90,7 @@ search_apple <- function(term, country = NULL, media = NULL, entity = NULL, attr
 #'
 #' @param id The ID of the iTunes entity
 #' @param country The two-letter country code for the store you want to search.
-#' For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1_alpha-2}
+#' For a list of country codes see \url{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}
 #' @param entity \code{Optional} The type of results you want returned, relative to the specified media type.
 #' @param limit \code{Optional} The number of search results you want the iTunes Store to return between 1 and 200.
 #' The default is 50.

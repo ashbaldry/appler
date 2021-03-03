@@ -17,7 +17,7 @@ lookup_apple(
 \item{id}{The ID of the iTunes entity}
 
 \item{country}{The two-letter country code for the store you want to search.
-For a list of country codes see \url{http://en.wikipedia.org/wiki/\%20ISO_3166-1_alpha-2}}
+For a list of country codes see \url{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}}
 
 \item{entity}{\code{Optional} The type of results you want returned, relative to the specified media type.}
 

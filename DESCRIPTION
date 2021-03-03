@@ -3,14 +3,12 @@ Type: Package
 Title: Apple iTunes Search API
 Version: 0.1.0
 Authors@R: person("Ashley", "Baldry", email = "arbaldry91@gmail.com", role = c("aut", "cre"))
-Description: APIs pulling information from the Apple App Store.
+Description: Apple Store web scraping and API data pulling for iTunes information and app ratings and reviews.
 URL: https://github.com/ashbaldry/appler, 
     https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/
-BugReport: https://github.com/ashbaldry/appler/issues
+BugReports: https://github.com/ashbaldry/appler/issues
 Imports: httr, jsonlite, rvest, glue, xml2, lubridate
-Suggests: 
-    testthat (>= 3.0.0),
-    covr
+Suggests: testthat (>= 3.0.0)
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
