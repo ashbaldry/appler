@@ -1,7 +1,17 @@
 testthat::context("get_apple_chart_postion")
 
+testthat::skip_if_offline("apps.apple.com")
+
 testthat::test_that("Simple app check returns list", {
-  res <- get_apple_chart_postion(979274575, "gb")
+  res <- tryCatch(
+    get_apple_chart_postion(979274575, "gb"),
+    error = function(e) NULL
+  )
+
+  testthat::skip_if(
+    is.null(res),
+    "App may no longer be available in the App Store"
+  )
 
   testthat::expect_is(res, "list")
   testthat::expect_is(res$position, "numeric")
@@ -10,7 +20,15 @@ testthat::test_that("Simple app check returns list", {
 })
 
 testthat::test_that("Check top app gets valid information", {
-  res <- get_apple_chart_postion(333903271, "gb")
+  res <- tryCatch(
+    get_apple_chart_postion(333903271, "gb"),
+    error = function(e) NULL
+  )
+
+  testthat::skip_if(
+    is.null(res),
+    "App may no longer be available in the App Store"
+  )
 
   testthat::expect_false(is.na(res$position))
   testthat::expect_false(is.na(res$category))
