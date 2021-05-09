@@ -1,0 +1,1 @@
+This release fixes test issues on CRAN pointed out by the CRAN team. Because tests require internet access, and more specifically using searching algorithms, the results may not produce the same result every time. Search result tests have been made more generic, and an inital test of internet connectivity has been included.
