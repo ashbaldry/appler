@@ -63,11 +63,15 @@ extract_review <- function(entry) {
 
   data.frame(
     id = as.numeric(xml2::xml_text(entry_child[child_names == "id"])),
-    review_time = lubridate::as_datetime(xml2::xml_text(entry_child[child_names == "updated"])),
+    review_time = extract_review_time(xml2::xml_text(entry_child[child_names == "updated"])),
     author = xml2::xml_text(xml2::xml_children(entry_child[child_names == "author"])[1]),
     app_version = xml2::xml_text(entry_child[child_names == "version"]),
     title = xml2::xml_text(entry_child[child_names == "title"]),
     rating = as.numeric(xml2::xml_text(entry_child[child_names == "rating"])),
     review = xml2::xml_text(entry_child[child_names == "content"][1])
   )
+}
+
+extract_review_time <- function(x) {
+  as.POSIXlt(sub(":(\\d+)$", "\\1", x), tz = "UTC", format = "%Y-%m-%dT%H:%M:%S%z")
 }

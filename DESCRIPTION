@@ -9,8 +9,8 @@ Description: Using 'Apple App Store' <https://www.apple.com/app-store/> web scra
 URL: https://github.com/ashbaldry/appler, 
     https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/
 BugReports: https://github.com/ashbaldry/appler/issues
-Imports: httr, jsonlite, rvest, glue, xml2, lubridate
+Imports: httr, jsonlite, rvest, glue, xml2
 Suggests: testthat (>= 3.0.0), curl
 License: GPL-2
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
