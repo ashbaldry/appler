@@ -22,9 +22,8 @@ Scrapes the App store page and retrieves the split of the ratings between 1 and 
 For overall rating and count, use \code{\link{lookup_apple}}
 }
 \examples{
-\dontrun{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Look up ratings split for Apollo in the UK
 get_apple_rating_split(979274575, "gb")
-}
-
+\dontshow{\}) # examplesIf}
 }

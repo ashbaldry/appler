@@ -45,14 +45,13 @@ You can create a lookup request to search for content in the stores based on iTu
 and All Music Guide (AMG) IDs. ID-based lookups are faster and contain fewer false-positive results.
 }
 \examples{
-\dontrun{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Look up Jack Johnson by iTunes artist ID
 lookup_apple(909253)
 
 # Look up Jack Johnson by AMG artist ID
 lookup_apple(468749, id_type = "amgArtistId")
-}
-
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \url{https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/}

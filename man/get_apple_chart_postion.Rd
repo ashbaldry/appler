@@ -20,9 +20,8 @@ A list of two, containing the position and the category of the App if available.
  on the App page).
 }
 \examples{
-\dontrun{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Look up ratings split for Apollo in the UK
 get_apple_chart_postion(979274575, "gb")
-}
-
+\dontshow{\}) # examplesIf}
 }
