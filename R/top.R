@@ -11,8 +11,10 @@
 #' @return A list of two, containing the position and the category of the App if available. Otherwise both will be \code{NA}
 #'
 #' @examples
+#' \dontrun{
 #' # Look up ratings split for Apollo in the UK
 #' get_apple_chart_postion(979274575, "gb")
+#' }
 #'
 #' @export
 get_apple_chart_postion <- function(id, country) {

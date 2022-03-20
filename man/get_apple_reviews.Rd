@@ -29,6 +29,8 @@ There is a maximum of 500 reviews that can be pulled.
 }
 \examples{
 # Look up reviews for Apollo in the UK
+\dontrun{
 get_apple_reviews(979274575, "gb")
+}
 
 }

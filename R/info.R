@@ -26,11 +26,13 @@
 #' If there were no successful results then it will return \code{NULL}.
 #'
 #' @examples
+#' \dontrun{
 #' # Search for all Jack Johnson audio and video content
 #' search_apple(term = "jack johnson")
 #'
 #' # To search for all Jack Johnson audio and video content and return only the first 25 items
 #' search_apple(term = "jack johnson", limit = 25)
+#' }
 #'
 #' @seealso \url{https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/}
 #'
@@ -110,11 +112,13 @@ search_apple <- function(term, country = NULL, media = NULL, entity = NULL, attr
 #' If there were no successful results then it will return \code{NULL}.
 #'
 #' @examples
+#' \dontrun{
 #' # Look up Jack Johnson by iTunes artist ID
 #' lookup_apple(909253)
 #'
 #' # Look up Jack Johnson by AMG artist ID
 #' lookup_apple(468749, id_type = "amgArtistId")
+#' }
 #'
 #' @seealso \url{https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/}
 #'

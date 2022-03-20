@@ -19,7 +19,9 @@
 #'
 #' @examples
 #' # Look up reviews for Apollo in the UK
+#' \dontrun{
 #' get_apple_reviews(979274575, "gb")
+#' }
 #'
 #' @export
 get_apple_reviews <- function(id, country = "us", all_results = FALSE, page_no = 1) {

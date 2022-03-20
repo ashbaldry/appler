@@ -49,11 +49,13 @@ If there were no successful results then it will return \code{NULL}.
 Using Apple's iTunes API, will find any content available from Apple based on a given search term.
 }
 \examples{
+\dontrun{
 # Search for all Jack Johnson audio and video content
 search_apple(term = "jack johnson")
 
 # To search for all Jack Johnson audio and video content and return only the first 25 items
 search_apple(term = "jack johnson", limit = 25)
+}
 
 }
 \seealso{
