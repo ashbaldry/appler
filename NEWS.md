@@ -1,3 +1,7 @@
+# appler 0.1.3
+
+* Updating examples
+
 # appler 0.1.2
 
 * Removing `{lubridate}` as a dependency
