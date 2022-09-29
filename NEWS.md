@@ -1,3 +1,7 @@
+# appler 0.1.4
+
+* Updating API documentation URL
+
 # appler 0.1.3
 
 * Updating examples
