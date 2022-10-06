@@ -58,5 +58,5 @@ search_apple(term = "jack johnson", limit = 25)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\url{https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/}
+\url{https://performance-partners.apple.com/resources/documentation/itunes-store-web-service-search-api.html}
 }
