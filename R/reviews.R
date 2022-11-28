@@ -39,7 +39,7 @@
 #' If there were no reviews then it will return \code{NULL}.
 #'
 #' @examplesIf interactive()
-#' # Search for GitHub in App Store in UK
+#' # Search for GitHub in App Store in the UK
 #' country_id <- "gb"
 #' github_search_results <- search_apple(
 #'   term = "GitHub",
@@ -48,7 +48,7 @@
 #' )
 #'
 #' # Look up reviews for GitHub
-#' # (id found in github_search_results)
+#' # (App ID found in trackId column of github_search_results)
 #' get_apple_reviews(1477376905, country_id)
 #'
 #' @export

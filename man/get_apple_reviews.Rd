@@ -57,7 +57,7 @@ the older reviews.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Search for GitHub in App Store in UK
+# Search for GitHub in App Store in the UK
 country_id <- "gb"
 github_search_results <- search_apple(
   term = "GitHub",
@@ -66,7 +66,7 @@ github_search_results <- search_apple(
 )
 
 # Look up reviews for GitHub
-# (id found in github_search_results)
+# (App ID found in trackId column of github_search_results)
 get_apple_reviews(1477376905, country_id)
 \dontshow{\}) # examplesIf}
 }

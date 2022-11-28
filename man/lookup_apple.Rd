@@ -46,6 +46,9 @@ and All Music Guide (AMG) IDs. ID-based lookups are faster and contain fewer fal
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Search for all Jack Johnson audio and video content
+search_apple(term = "Jack Johnson")
+
 # Look up Jack Johnson by iTunes artist ID
 lookup_apple(909253)
 
