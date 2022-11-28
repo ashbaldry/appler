@@ -32,7 +32,7 @@
 #' # To search for all Jack Johnson audio and video content and return only the first 25 items
 #' search_apple(term = "jack johnson", limit = 25)
 #'
-#' @seealso \url{https://performance-partners.apple.com/resources/documentation/itunes-store-web-service-search-api.html}
+#' @seealso \url{https://performance-partners.apple.com/search-api}
 #'
 #' @export
 search_apple <- function(term, country = NULL, media = NULL, entity = NULL, attribute = NULL,
@@ -116,7 +116,7 @@ search_apple <- function(term, country = NULL, media = NULL, entity = NULL, attr
 #' # Look up Jack Johnson by AMG artist ID
 #' lookup_apple(468749, id_type = "amgArtistId")
 #'
-#' @seealso \url{https://performance-partners.apple.com/resources/documentation/itunes-store-web-service-search-api.html}
+#' @seealso \url{https://performance-partners.apple.com/search-api}
 #'
 #' @export
 lookup_apple <- function(id, country = NULL, entity = NULL, limit = NULL, sort = NULL, id_type = "id") {

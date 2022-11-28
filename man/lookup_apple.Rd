@@ -54,5 +54,5 @@ lookup_apple(468749, id_type = "amgArtistId")
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\url{https://performance-partners.apple.com/resources/documentation/itunes-store-web-service-search-api.html}
+\url{https://performance-partners.apple.com/search-api}
 }
