@@ -4,32 +4,69 @@
 \alias{get_apple_reviews}
 \title{Apple App Store Reviews}
 \usage{
-get_apple_reviews(id, country = "us", all_results = FALSE, page_no = 1)
+get_apple_reviews(
+  id,
+  country = "us",
+  all_results = FALSE,
+  page_no = 1,
+  sort_by = c("mostrecent", "mosthelpful")
+)
 }
 \arguments{
-\item{id}{The ID of the App on the Apple App Store}
+\item{id}{The ID of the App on the Apple App Store. Either found by using \code{\link{search_apple}},
+or available in the URL of the app to pull reviews from. For example, GitHub's App ID is \code{1477376903},
+as seen in its URL: \url{https://apps.apple.com/gb/app/id1477376905}}
 
 \item{country}{The two-letter country code for the store you want to search.
 For a list of country codes see \url{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}}
 
-\item{all_results}{Logical, would you like all possible reviews to be pulled?}
+\item{all_results}{Logical, would you like all possible reviews to be pulled? By default set to
+\code{FALSE}}
 
 \item{page_no}{If \code{page_no = FALSE} then the page of reviews to pull. Defaults to most recent.}
+
+\item{sort_by}{Which order should the reviews be pulled? There are currently two possible options:
+\describe{
+\item{\code{"mostrecent"}}{Sorts by the time reviews are posted and pulls the most recently posted reviews}
+\item{\code{"mosthelpful"}}{Sorts the reviews by usefulness and returns the most useful posts. For larger
+apps, the top 500 may not match the top 500 most recent}
+}}
 }
 \value{
-A \code{data.frame} of the extracted reviews.
+A \code{data.frame} of the extracted reviews, containing:
+\itemize{
+\item{\code{id}}{The reveiw ID}
+\item{\code{review_time}}{The time the review was posted on the App Store}
+\item{\code{author}}{The username of the reviewer}
+\item{\code{app_version}}{The version of the application that was installed when reviewing the application}
+\item{\code{title}}{Title summary of the review}
+\item{\code{rating}}{The rating (out of 5) given to the application}
+\item{\code{review}}{The text of the review}
+}
 
 If there were no reviews then it will return \code{NULL}.
 }
 \description{
-Using Apple's RSS feed, will extract the reviews from a specific country for the desired application.
+Using Apple's RSS feed, extract the most recent or helpful reviews for a specific application.
 }
 \details{
-There is a maximum of 500 reviews that can be pulled.
+There is a limitation in Apple's RSS feed that means only the 500 most recent/helpful reviews
+can be pulled. There are 10 pages of results from the RSS feed, each one containing 50 reviews.
+It is recommended to periodically store reviews in a database or other storage system to track
+the older reviews.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Look up reviews for Apollo in the UK
-get_apple_reviews(979274575, "gb")
+# Search for GitHub in App Store in UK
+country_id <- "gb"
+github_search_results <- search_apple(
+  term = "GitHub",
+  country = country_id,
+  media = "software"
+)
+
+# Look up reviews for GitHub
+# (id found in github_search_results)
+get_apple_reviews(1477376905, country_id)
 \dontshow{\}) # examplesIf}
 }
