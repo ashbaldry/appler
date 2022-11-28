@@ -1,0 +1,39 @@
+---
+title: "Introduction to {appler}"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/ashbaldry/appler/workflows/R-CMD-check/badge.svg)](https://github.com/ashbaldry/appler/actions)
+<!-- badges: end -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(appler)
+```
+
+## Introduction
+
+The {appler} package is a wrapper around Apple's [App Store Search API](https://performance-partners.apple.com/search-api). This allows the user to ...
+
+## Apple Store Search
+
+## Apple Store Lookup
+
+## Reviews
+
+One extra piece of functionality available in {appler} is the ability to scrape the average ratings from
+the App Store.
+
+```{r ratings}
+```
