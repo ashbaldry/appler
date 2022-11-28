@@ -18,39 +18,48 @@
 #' There is a maximum of 500 reviews that can be pulled.
 #'
 #' @examplesIf interactive()
-#' # Look up reviews for Apollo in the UK
-#' get_apple_reviews(979274575, "gb")
+#' # Search for the app
+#' github_app <- search_apple("GitHub", "gb", media = "software")
+#'
+#' # Look up reviews for GitHub in the UK
+#' get_apple_reviews(1477376905, "gb")
 #'
 #' @export
 get_apple_reviews <- function(id, country = "us", all_results = FALSE, page_no = 1) {
   if (nchar(country) != 2) stop("Country must be a 2 digit ISO code")
 
-  url <- glue::glue(
-    "https://itunes.apple.com/{country}/rss/customerreviews/page={page_no}/id={id}/sortby=mostrecent/xml"
+  url <- sprintf(
+    "https://itunes.apple.com/%s/rss/customerreviews/page=%s/id=%s/sortby=mostrecent/json",
+    country,
+    page_no,
+    id
   )
   req <- httr::GET(url)
   httr::stop_for_status(req)
 
   res <- httr::content(req, encoding = "UTF-8")
-  res <- xml2::xml_children(res)
-  entries <- res[xml2::xml_name(res) == "entry"]
-
-  reviews <- lapply(entries, extract_review)
+  res <- jsonlite::fromJSON(res, simplifyDataFrame = FALSE)
+  reviews <- lapply(res$feed$entry, extract_review)
 
   if (isTRUE(all_results)) {
-    while ("next" %in% xml2::xml_attr(res, "rel")) {
-      url <- xml2::xml_attr(res[which(xml2::xml_attr(res, "rel") == "next")], "href")
+    links <- res$feed$link
+    link_types <- vapply(links, function(x) x$attributes$rel, character(1))
+
+    while ("next" %in% link_types) {
+      url <- links[[which(link_types == "next")]]$attributes$href
+      url <- sub("xml?", "json?", url, fixed = TRUE)
 
       req <- httr::GET(url)
 
       res <- httr::content(req, encoding = "UTF-8")
-      res <- xml2::xml_children(res)
-      entries <- res[xml2::xml_name(res) == "entry"]
+      res <- jsonlite::fromJSON(res, simplifyDataFrame = FALSE)
+      reviews <- append(reviews, lapply(res$feed$entry, extract_review))
 
-      reviews <- append(reviews, lapply(entries, extract_review))
+      links <- res$feed$link
+      link_types <- vapply(links, function(x) x$attributes$rel, character(1))
 
-      new_url <- xml2::xml_attr(res[which(xml2::xml_attr(res, "rel") == "next")], "href")
-      if (sub("\\?.*", "", url) == sub("\\?.*", "", new_url)) break()
+      new_url <- links[[which(link_types == "next")]]$attributes$href
+      if (sub("\\w+\\?.*", "", url) == sub("\\w+\\?.*", "", new_url)) break()
     }
   }
 
@@ -58,17 +67,14 @@ get_apple_reviews <- function(id, country = "us", all_results = FALSE, page_no =
 }
 
 extract_review <- function(entry) {
-  entry_child <- xml2::xml_children(entry)
-  child_names <- xml2::xml_name(entry_child)
-
   data.frame(
-    id = as.numeric(xml2::xml_text(entry_child[child_names == "id"])),
-    review_time = extract_review_time(xml2::xml_text(entry_child[child_names == "updated"])),
-    author = xml2::xml_text(xml2::xml_children(entry_child[child_names == "author"])[1]),
-    app_version = xml2::xml_text(entry_child[child_names == "version"]),
-    title = xml2::xml_text(entry_child[child_names == "title"]),
-    rating = as.numeric(xml2::xml_text(entry_child[child_names == "rating"])),
-    review = xml2::xml_text(entry_child[child_names == "content"][1])
+    id = as.numeric(entry$id$label),
+    review_time = extract_review_time(entry$updated$label),
+    author = entry$author$name$label,
+    app_version = entry[["im:version"]]$label,
+    title = entry$title$label,
+    rating = as.numeric(entry[["im:rating"]]$label),
+    review = entry$content$label
   )
 }
 
