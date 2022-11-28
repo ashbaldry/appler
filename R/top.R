@@ -18,7 +18,8 @@
 get_apple_chart_postion <- function(id, country) {
   if (nchar(country) != 2) stop("Country must be a 2 digit ISO code")
 
-  req <- httr::GET(glue::glue("https://apps.apple.com/{country}/app/id{id}"))
+  url <- sprintf("https://apps.apple.com/%s/app/id%s", country, id)
+  req <- httr::GET(url)
   httr::stop_for_status(req)
 
   res <- httr::content(req)

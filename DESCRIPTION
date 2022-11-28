@@ -9,8 +9,13 @@ Description: Using 'Apple App Store' <https://www.apple.com/app-store/> web scra
 URL: https://github.com/ashbaldry/appler, 
     https://performance-partners.apple.com/search-api
 BugReports: https://github.com/ashbaldry/appler/issues
-Imports: httr, jsonlite, rvest, glue, xml2
-Suggests: testthat (>= 3.0.0), curl
+Imports: httr, jsonlite, rvest
+Suggests: 
+    testthat (>= 3.0.0),
+    curl,
+    knitr,
+    rmarkdown
 License: GPL-2
 Encoding: UTF-8
 RoxygenNote: 7.1.2
+VignetteBuilder: knitr
