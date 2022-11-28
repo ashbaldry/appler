@@ -10,7 +10,11 @@ URL: https://github.com/ashbaldry/appler,
     https://performance-partners.apple.com/search-api
 BugReports: https://github.com/ashbaldry/appler/issues
 Imports: httr, jsonlite, rvest
-Suggests: testthat (>= 3.0.0), knitr, rmarkdown
+Suggests: 
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    covr
 License: GPL-2
 Encoding: UTF-8
 RoxygenNote: 7.2.2
