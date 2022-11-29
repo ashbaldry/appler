@@ -1,10 +1,5 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
 
-## `appler`
+## appler
 
 <!-- badges: start -->
 
