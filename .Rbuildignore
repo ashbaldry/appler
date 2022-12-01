@@ -5,3 +5,4 @@
 ^CRAN-RELEASE$
 ^cran-comments\.md$
 inst/docs
+^data-raw$
