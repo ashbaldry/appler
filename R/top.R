@@ -1,13 +1,13 @@
-#' Check App Chart
+#' Apple App Store Chart Position
 #'
 #' @description
-#' Search for whether an application is currently in the top 100 applications of any category
-#' on the Apple App Store
+#' Search for whether an application is currently in the top 100 apps of any category
+#' on the Apple App Store.
 #'
 #' @inheritParams get_apple_chart_postion
 #'
 #' @return
-#' A list of two, containing the position and the category of the App if available.
+#' A list of two, containing the `position` and the `category` of the app if available.
 #'
 #' If the application is not in the charts then both fields will return as \code{NA}
 #'

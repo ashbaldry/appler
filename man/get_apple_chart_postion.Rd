@@ -2,22 +2,18 @@
 % Please edit documentation in R/top.R
 \name{get_apple_chart_postion}
 \alias{get_apple_chart_postion}
-\title{Check App Chart}
+\title{Apple App Store Chart Position}
 \usage{
 get_apple_chart_postion(id, country)
 }
-\arguments{
-\item{id}{The ID of the App on the Apple App Store}
-
-\item{country}{The two-letter country code for the store you want to search.
-For a list of country codes see \url{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}}
-}
 \value{
-A list of two, containing the position and the category of the App if available. Otherwise both will be \code{NA}
+A list of two, containing the `position` and the `category` of the app if available.
+
+If the application is not in the charts then both fields will return as \code{NA}
 }
 \description{
-\code{get_apple_chart_postion} searches for whether an App is within the top 100 for any category
-(generally found on the App page).
+Search for whether an application is currently in the top 100 apps of any category
+on the Apple App Store.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
