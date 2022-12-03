@@ -1,7 +1,6 @@
 library(appler)
 
 # iTunes web --------------------------------------------------------------
-
 # https://music.apple.com/ca/browse
 # https://music.apple.com/ca/album/get-rollin/1642697894
 # https://music.apple.com/ca/artist/nickelback/5280361
@@ -22,7 +21,7 @@ library(appler)
 # Top Songs   https://music.apple.com/ca/browse/top-charts/songs/
 
 # --- sample of some artists for quick use for users
-apple_artists <- data.frame(
+itunes_artists <- data.frame(
   artist = c(
     "Nickelback",
     "Shania Twain",
@@ -48,9 +47,10 @@ apple_artists <- data.frame(
     471744
   )
 )
+save(itunes_artists, file = "data/itunes_artists.rda", compress = "bzip2", version = 3)
 
 # --- use the dataset to get artist id
-lizzo <- apple_artists[apple_artists$artist == "Lizzo", ]
+lizzo <- itunes_artists[itunes_artists$artist == "Lizzo", ]
 lizzo_id <- lizzo$artist_id
 lizzo_name <- lizzo$artist
 
@@ -495,6 +495,7 @@ apple_apps <- data.frame(
     1411869974
   )
 )
+save(apple_apps, file = "data/apple_apps.rda", compress = "bzip2", version = 3)
 
 # https://apps.apple.com/ca/developer/github/id429758986
 # https://apps.apple.com/ca/app/github/id1477376905
