@@ -33,10 +33,30 @@ Other functions are included to allow the pulling of information not included in
 
 ## Apple Store Search
 
+The first thing to do is find the ID of the entity you are analysing. The `search_apple` function will use Apple's API to return any items that are related to the search terms entered. By default it pulls tracks and audiobooks, however with the `entity` parameter we can specify we want to search for artists or applications.
 
+```{r search_artist}
+# Artist ID can be obtained from the artistId column
+taylor_swift_songs <- search_apple("Taylor Swift")
 
-```{r search}
+taylor_swift <- search_apple("Taylor Swift", media = "music", entity = "musicArtist")
+str(taylor_swift)
+
+taylor_swift_id <- taylor_swift$artistId
 ```
+
+Applications are slightly different, where they instead of `artistId`, `trackId` is used to store the unique ID.
+
+```{r search_app}
+github_tracks <- search_apple("GitHub")
+
+github_app <- search_apple("GitHub", media = "software", entity = "software")
+# Over 50 apps are returned, however the top is the official GitHub app
+github_app_id <- github_app$trackId[1]
+cat(github_app_id)
+```
+
+When searching software, a lot more information is returned, such as application metadata (size, version, release notes) and average rating. Use `str(github_app)` to take a look at everything included.
 
 ### Manual Search
 
@@ -46,20 +66,39 @@ For artists and tracks it can be found as the last part of the URL. For example,
 
 For applications it is almost the same, however it is prefixed with "id" which will need to be removed when using functions from {appler}. For example the ID for GitHub is `1477376905` (from https://apps.apple.com/us/app/github/id1477376905).
 
-## Apple Store Lookup
+### Apple Store Lookup
+
+If you already have the ID, you can use `lookup_apple` and it will return the same information as `search_apple` but for the specific entity chosen.
 
 ```{r lookup}
+taylor_swift_lookup <- lookup_apple(taylor_swift_id)
+str(taylor_swift_lookup)
+```
+
+Comparing the results of search and lookup:
+
+```{r lookup_comparison}
+taylor_swift_cols <- names(taylor_swift)
+cat("Same results:", all.equal(taylor_swift, taylor_swift_lookup[, taylor_swift_cols]), "\n")
 ```
 
 ## Reviews
 
+Once you have the ID, you can get to the interesting part: the reviews. Apple has an RSS feed that enables you to pull the latest 500 reviews for an application, along with information such as the version that was being reviewed, and what rating was given by the user.
+
+There is a limitation that you can only pull the reviews for a single country, and by default the reviews from the US will be returned, however any [ISO-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) can be used. If the app isn't available in that country, then there will be a 400 error.
+
 ```{r reviews}
+github_reviews <- get_apple_reviews(github_app_id)
+head(github_reviews)
 ```
 
 ## Ratings
 
-One extra piece of functionality available in {appler} is the ability to scrape the average ratings from
-the App Store.
+One extra piece of functionality available in {appler} is the ability to scrape the rating split from
+the App Store. Whilst the average rating for the app is available in `search_apple`, it is useful to know how many 5* ratings are given and how many 1* ratings are given.
 
 ```{r ratings}
+github_ratings <- get_apple_rating_split(github_app_id)
+github_ratings
 ```
