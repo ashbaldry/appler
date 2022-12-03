@@ -9,135 +9,80 @@
 
 <img src="man/img/appler.png" height="200" align="right"/>
 
-The goal of `appler` is to be able to pull information from the Apple
-iTunes and App Stores.
+## Introduction
 
-### Installation
+The {appler} package is a wrapper around Apple's [App Store Search API](https://performance-partners.apple.com/search-api). This allows the user to pull information about artists, applications, and anything else available on iTunes or the Apple App Store.
 
-    devtools::install_github("ashbaldry/appler")
+Other functions are included to allow the pulling of information not included in the search API such as application reviews and split of ratings.
 
-### Functionality
+## Apple Store Search
 
-    library(appler)
+The first thing to do is find the ID of the entity you are analysing. The `search_apple` function will use Apple's API to return any items that are related to the search terms entered. By default it pulls tracks and audiobooks, however with the `entity` parameter we can specify we want to search for artists or applications.
 
-#### `search_apple`
+```{r search_artist}
+# Artist ID can be obtained from the artistId column
+taylor_swift_songs <- search_apple("Taylor Swift")
 
-A simple search tool that returns Apple items that are related to the
-search term.
+taylor_swift <- search_apple("Taylor Swift", media = "music", entity = "musicArtist")
+str(taylor_swift)
 
-    search_results <- search_apple("GitHub", "gb")
-    dim(search_results)
+taylor_swift_id <- taylor_swift$artistId
+```
 
-    ## [1] 14 42
+Applications are slightly different, where they instead of `artistId`, `trackId` is used to store the unique ID.
 
-    names(search_results)
+```{r search_app}
+github_tracks <- search_apple("GitHub")
 
-    ##  [1] "wrapperType"            "kind"                   "artistId"              
-    ##  [4] "collectionId"           "trackId"                "artistName"            
-    ##  [7] "collectionName"         "trackName"              "collectionCensoredName"
-    ## [10] "trackCensoredName"      "artistViewUrl"          "collectionViewUrl"     
-    ## [13] "trackViewUrl"           "previewUrl"             "artworkUrl30"          
-    ## [16] "artworkUrl60"           "artworkUrl100"          "collectionPrice"       
-    ## [19] "trackPrice"             "releaseDate"            "collectionExplicitness"
-    ## [22] "trackExplicitness"      "discCount"              "discNumber"            
-    ## [25] "trackCount"             "trackNumber"            "trackTimeMillis"       
-    ## [28] "country"                "currency"               "primaryGenreName"      
-    ## [31] "isStreamable"           "collectionArtistId"     "collectionArtistName"  
-    ## [34] "feedUrl"                "trackRentalPrice"       "collectionHdPrice"     
-    ## [37] "trackHdPrice"           "trackHdRentalPrice"     "contentAdvisoryRating" 
-    ## [40] "artworkUrl600"          "genreIds"               "genres"
+github_app <- search_apple("GitHub", media = "software", entity = "software")
+# Over 50 apps are returned, however the top is the official GitHub app
+github_app_id <- github_app$trackId[1]
+cat(github_app_id)
+```
 
-#### `lookup_apple`
+When searching software, a lot more information is returned, such as application metadata (size, version, release notes) and average rating. Use `str(github_app)` to take a look at everything included.
 
-Using the ID of an Apple item (found in the URL) returns basic
-information about the selected item.
+### Manual Search
 
-    lookup_results <- lookup_apple(1477376905, "gb")
-    dim(lookup_results)
+Alternatively the ID can be found in the URL. 
 
-    ## [1]  1 44
+For artists and tracks it can be found as the last part of the URL. For example, to find out about Taylor Swift the ID is `159260351` (from https://music.apple.com/us/artist/taylor-swift/159260351), or her latest album Midnights is `1650841512` (from https://music.apple.com/us/album/midnights-3am-edition/1650841512).
 
-    names(lookup_results)
+For applications it is almost the same, however it is prefixed with "id" which will need to be removed when using functions from {appler}. For example the ID for GitHub is `1477376905` (from https://apps.apple.com/us/app/github/id1477376905).
 
-    ##  [1] "ipadScreenshotUrls"                 "appletvScreenshotUrls"             
-    ##  [3] "artworkUrl60"                       "artworkUrl512"                     
-    ##  [5] "artworkUrl100"                      "artistViewUrl"                     
-    ##  [7] "screenshotUrls"                     "supportedDevices"                  
-    ##  [9] "advisories"                         "isGameCenterEnabled"               
-    ## [11] "features"                           "kind"                              
-    ## [13] "minimumOsVersion"                   "trackCensoredName"                 
-    ## [15] "languageCodesISO2A"                 "fileSizeBytes"                     
-    ## [17] "sellerUrl"                          "formattedPrice"                    
-    ## [19] "contentAdvisoryRating"              "averageUserRatingForCurrentVersion"
-    ## [21] "userRatingCountForCurrentVersion"   "averageUserRating"                 
-    ## [23] "trackViewUrl"                       "trackContentRating"                
-    ## [25] "releaseDate"                        "trackId"                           
-    ## [27] "trackName"                          "currentVersionReleaseDate"         
-    ## [29] "releaseNotes"                       "primaryGenreName"                  
-    ## [31] "genreIds"                           "isVppDeviceBasedLicensingEnabled"  
-    ## [33] "primaryGenreId"                     "sellerName"                        
-    ## [35] "currency"                           "description"                       
-    ## [37] "artistId"                           "artistName"                        
-    ## [39] "genres"                             "price"                             
-    ## [41] "bundleId"                           "version"                           
-    ## [43] "wrapperType"                        "userRatingCount"
+### Apple Store Lookup
 
-#### `get_apple_rating_split`
+If you already have the ID, you can use `lookup_apple` and it will return the same information as `search_apple` but for the specific entity chosen.
 
-The API only extracts the average review, so this scrapes the app page
-for the split of 1 :star: to 5 :star: ratings.
+```{r lookup}
+taylor_swift_lookup <- lookup_apple(taylor_swift_id)
+str(taylor_swift_lookup)
+```
 
-    ratings <- get_apple_rating_split(1477376905, "gb")
-    ratings
+Comparing the results of search and lookup:
 
-    ##   rating percent
-    ## 1      5    0.83
-    ## 2      4    0.11
-    ## 3      3    0.04
-    ## 4      2    0.01
-    ## 5      1    0.01
+```{r lookup_comparison}
+taylor_swift_cols <- names(taylor_swift)
+cat("Same results:", all.equal(taylor_swift, taylor_swift_lookup[, taylor_swift_cols]), "\n")
+```
 
-#### `get_apple_reviews`
+## Reviews
 
-Pulls the most recent reviews for a selected app.
+Once you have the ID, you can get to the interesting part: the reviews. Apple has an RSS feed that enables you to pull the latest 500 reviews for an application, along with information such as the version that was being reviewed, and what rating was given by the user.
 
-    reviews <- get_apple_reviews(1477376905, "gb")
-    head(reviews)
+There is a limitation that you can only pull the reviews for a single country, and by default the reviews from the US will be returned, however any [ISO-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) can be used. If the app isn't available in that country, then there will be a 400 error.
 
-    ##           id         review_time         author app_version
-    ## 2 6995723328 2021-02-15 03:10:28  Max Hitchings       1.4.2
-    ## 3 6977862590 2021-02-10 14:35:30  Benthomas7777       1.4.2
-    ## 4 6971291453 2021-02-08 23:05:47      amr rayed       1.4.2
-    ## 5 6957031610 2021-02-05 12:38:08 superyellyfish       1.4.2
-    ## 6 6900870415 2021-01-22 16:56:46        Kilthar         1.4
-    ## 7 6835125060 2021-01-05 20:09:28    Omnibus-KEI       1.3.4
-    ##                  title rating
-    ## 2                 GOOD      5
-    ## 3 Great Productive App      5
-    ## 4              Amr8457      5
-    ## 5      App works great      5
-    ## 6            Great app      5
-    ## 7             Good app      5
-    ##                                                                review
-    ## 2                                                                GOOD
-    ## 3 Offers a nice way to do code reviews and deal with issues on the go
-    ## 4      Please can you rate all message \nFrom this email and Facebook
-    ## 5                                     Good app, an essential service.
-    ## 6    Works as it says on the tin. Great in a pinch on a train or bus!
-    ## 7                                       I think is good application:)
+```{r reviews}
+github_reviews <- get_apple_reviews(github_app_id)
+head(github_reviews)
+```
 
-#### `get_apple_chart_postion`
+## Ratings
 
-Checks whether the app is within any category chart and returns the
-position and category
+One extra piece of functionality available in {appler} is the ability to scrape the rating split from
+the App Store. Whilst the average rating for the app is available in `search_apple`, it is useful to know how many 5* ratings are given and how many 1* ratings are given.
 
-    chart_pos <- get_apple_chart_postion(1477376905, "gb")
-    chart_pos
-
-    ## $position
-    ## [1] 1
-    ## 
-    ## $category
-    ## [1] "Developer Tools"
-
-**NB** All ratings and reviews are country specific.
+```{r ratings}
+github_ratings <- get_apple_rating_split(github_app_id)
+github_ratings
+```
