@@ -4,7 +4,7 @@
 #' Search for whether an application is currently in the top 100 apps of any category
 #' on the Apple App Store.
 #'
-#' @inheritParams get_apple_chart_postion
+#' @inheritParams get_apple_reviews
 #'
 #' @return
 #' A list of two, containing the `position` and the `category` of the app if available.

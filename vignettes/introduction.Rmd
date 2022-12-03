@@ -12,26 +12,51 @@ vignette: >
 [![Codecov test coverage](https://codecov.io/gh/ashbaldry/appler/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ashbaldry/appler?branch=main)
 <!-- badges: end -->
 
-```{r, include = FALSE}
+<img src="../man/img/appler.png" height="200" align="right"/>
+
+```{r setup, include = FALSE}
+options(rmarkdown.html_vignette.check_title = FALSE)
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-```
 
-```{r setup}
 library(appler)
 ```
 
 ## Introduction
 
-The {appler} package is a wrapper around Apple's [App Store Search API](https://performance-partners.apple.com/search-api). This allows the user to ...
+The {appler} package is a wrapper around Apple's [App Store Search API](https://performance-partners.apple.com/search-api). This allows the user to pull information about artists, applications, and anything else available on iTunes or the Apple App Store.
+
+Other functions are included to allow the pulling of information not included in the search API such as application reviews and split of ratings.
 
 ## Apple Store Search
 
+
+
+```{r search}
+```
+
+### Manual Search
+
+Alternatively the ID can be found in the URL. 
+
+For artists and tracks it can be found as the last part of the URL. For example, to find out about Taylor Swift the ID is `159260351` (from https://music.apple.com/us/artist/taylor-swift/159260351), or her latest album Midnights is `1650841512` (from https://music.apple.com/us/album/midnights-3am-edition/1650841512).
+
+For applications it is almost the same, however it is prefixed with "id" which will need to be removed when using functions from {appler}. For example the ID for GitHub is `1477376905` (from https://apps.apple.com/us/app/github/id1477376905).
+
 ## Apple Store Lookup
 
+```{r lookup}
+```
+
 ## Reviews
+
+```{r reviews}
+```
+
+## Ratings
 
 One extra piece of functionality available in {appler} is the ability to scrape the average ratings from
 the App Store.

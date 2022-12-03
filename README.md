@@ -7,7 +7,7 @@
 [![Codecov test coverage](https://codecov.io/gh/ashbaldry/appler/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ashbaldry/appler?branch=main)
 <!-- badges: end -->
 
-<img src="./img/appler.png" height="200" align="right"/>
+<img src="man/img/appler.png" height="200" align="right"/>
 
 The goal of `appler` is to be able to pull information from the Apple
 iTunes and App Stores.
