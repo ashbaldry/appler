@@ -2,7 +2,6 @@
 ## appler
 
 <!-- badges: start -->
-
 [![R-CMD-check](https://github.com/ashbaldry/appler/workflows/R-CMD-check/badge.svg)](https://github.com/ashbaldry/appler/actions)
 [![Codecov test coverage](https://codecov.io/gh/ashbaldry/appler/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ashbaldry/appler?branch=main)
 <!-- badges: end -->
@@ -19,7 +18,7 @@ Other functions are included to allow the pulling of information not included in
 
 The first thing to do is find the ID of the entity you are analysing. The `search_apple` function will use Apple's API to return any items that are related to the search terms entered. By default it pulls tracks and audiobooks, however with the `entity` parameter we can specify we want to search for artists or applications.
 
-```{r search_artist}
+```r
 # Artist ID can be obtained from the artistId column
 taylor_swift_songs <- search_apple("Taylor Swift")
 
@@ -31,13 +30,12 @@ taylor_swift_id <- taylor_swift$artistId
 
 Applications are slightly different, where they instead of `artistId`, `trackId` is used to store the unique ID.
 
-```{r search_app}
+```r
 github_tracks <- search_apple("GitHub")
 
 github_app <- search_apple("GitHub", media = "software", entity = "software")
 # Over 50 apps are returned, however the top is the official GitHub app
 github_app_id <- github_app$trackId[1]
-cat(github_app_id)
 ```
 
 When searching software, a lot more information is returned, such as application metadata (size, version, release notes) and average rating. Use `str(github_app)` to take a look at everything included.
@@ -54,16 +52,8 @@ For applications it is almost the same, however it is prefixed with "id" which w
 
 If you already have the ID, you can use `lookup_apple` and it will return the same information as `search_apple` but for the specific entity chosen.
 
-```{r lookup}
+```r
 taylor_swift_lookup <- lookup_apple(taylor_swift_id)
-str(taylor_swift_lookup)
-```
-
-Comparing the results of search and lookup:
-
-```{r lookup_comparison}
-taylor_swift_cols <- names(taylor_swift)
-cat("Same results:", all.equal(taylor_swift, taylor_swift_lookup[, taylor_swift_cols]), "\n")
 ```
 
 ## Reviews
@@ -72,9 +62,8 @@ Once you have the ID, you can get to the interesting part: the reviews. Apple ha
 
 There is a limitation that you can only pull the reviews for a single country, and by default the reviews from the US will be returned, however any [ISO-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) can be used. If the app isn't available in that country, then there will be a 400 error.
 
-```{r reviews}
+```r
 github_reviews <- get_apple_reviews(github_app_id)
-head(github_reviews)
 ```
 
 ## Ratings
@@ -82,7 +71,6 @@ head(github_reviews)
 One extra piece of functionality available in {appler} is the ability to scrape the rating split from
 the App Store. Whilst the average rating for the app is available in `search_apple`, it is useful to know how many 5* ratings are given and how many 1* ratings are given.
 
-```{r ratings}
+```r
 github_ratings <- get_apple_rating_split(github_app_id)
-github_ratings
 ```
