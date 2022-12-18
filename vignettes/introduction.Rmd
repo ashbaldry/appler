@@ -35,6 +35,10 @@ Other functions are included to allow the pulling of information not included in
 
 The first thing to do is find the ID of the entity you are analysing. The `search_apple` function will use Apple's API to return any items that are related to the search terms entered. By default it pulls tracks and audiobooks, however with the `entity` parameter we can specify we want to search for artists or applications.
 
+```{r, include = FALSE}
+Sys.sleep(1)
+```
+
 ```{r search_artist}
 # Artist ID can be obtained from the artistId column
 taylor_swift_songs <- search_apple("Taylor Swift")
@@ -46,6 +50,10 @@ taylor_swift_id <- taylor_swift$artistId
 ```
 
 Applications are slightly different, where they instead of `artistId`, `trackId` is used to store the unique ID.
+
+```{r, include = FALSE}
+Sys.sleep(1)
+```
 
 ```{r search_app}
 github_tracks <- search_apple("GitHub")
@@ -70,6 +78,10 @@ For applications it is almost the same, however it is prefixed with "id" which w
 
 If you already have the ID, you can use `lookup_apple` and it will return the same information as `search_apple` but for the specific entity chosen.
 
+```{r, include = FALSE}
+Sys.sleep(1)
+```
+
 ```{r lookup}
 taylor_swift_lookup <- lookup_apple(taylor_swift_id)
 str(taylor_swift_lookup)
@@ -88,6 +100,10 @@ Once you have the ID, you can get to the interesting part: the reviews. Apple ha
 
 There is a limitation that you can only pull the reviews for a single country, and by default the reviews from the US will be returned, however any [ISO-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) can be used. If the app isn't available in that country, then there will be a 400 error.
 
+```{r, include = FALSE}
+Sys.sleep(1)
+```
+
 ```{r reviews}
 github_reviews <- get_apple_reviews(github_app_id)
 head(github_reviews)
@@ -97,6 +113,10 @@ head(github_reviews)
 
 One extra piece of functionality available in {appler} is the ability to scrape the rating split from
 the App Store. Whilst the average rating for the app is available in `search_apple`, it is useful to know how many 5* ratings are given and how many 1* ratings are given.
+
+```{r, include = FALSE}
+Sys.sleep(1)
+```
 
 ```{r ratings}
 github_ratings <- get_apple_rating_split(github_app_id)
