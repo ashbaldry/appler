@@ -6,7 +6,7 @@
 [![Codecov test coverage](https://codecov.io/gh/ashbaldry/appler/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ashbaldry/appler?branch=main)
 <!-- badges: end -->
 
-<img src="man/img/appler.png" height="200" align="right"/>
+<img src="man/figures/appler.png" height="200" align="right"/>
 
 ## Introduction
 
