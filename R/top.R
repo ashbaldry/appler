@@ -1,24 +1,35 @@
-#' Check App Chart
+#' Apple App Store Chart Position
 #'
 #' @description
-#' \code{get_apple_chart_postion} searches for whether an App is within the top 100 for any category (generally found
-#'  on the App page).
+#' Search for whether an application is currently in the top 100 apps of any category
+#' on the Apple App Store.
 #'
-#' @param id The ID of the App on the Apple App Store
-#' @param country The two-letter country code for the store you want to search.
-#' For a list of country codes see \url{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}
+#' @inheritParams get_apple_reviews
 #'
-#' @return A list of two, containing the position and the category of the App if available. Otherwise both will be \code{NA}
+#' @return
+#' A list of two, containing the `position` and the `category` of the app if available.
+#'
+#' If the application is not in the charts then both fields will return as \code{NA}
 #'
 #' @examplesIf interactive()
-#' # Look up ratings split for Apollo in the UK
-#' get_apple_chart_postion(979274575, "gb")
+#' # Search for GitHub in App Store in the UK
+#' country_id <- "gb"
+#' github_search_results <- search_apple(
+#'   term = "GitHub",
+#'   country = country_id,
+#'   media = "software"
+#' )
+#'
+#' # Look up chart position for GitHub in the UK
+#' # (App ID found in trackId column of github_search_results)
+#' get_apple_chart_postion(1477376905, "gb")
 #'
 #' @export
 get_apple_chart_postion <- function(id, country) {
   if (nchar(country) != 2) stop("Country must be a 2 digit ISO code")
 
-  req <- httr::GET(glue::glue("https://apps.apple.com/{country}/app/id{id}"))
+  url <- sprintf("https://apps.apple.com/%s/app/id%s", country, id)
+  req <- httr::GET(url)
   httr::stop_for_status(req)
 
   res <- httr::content(req)

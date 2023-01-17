@@ -1,6 +1,13 @@
+# appler 0.2.0
+
+* Using JSON RSS feed rather than XML RSS feed for App Store reviews
+  * Removing `{glue}` and `{xml2}` as dependencies
+* Improvements to documentation (#6)
+* Updating API documentation URL (#3)
+
 # appler 0.1.4
 
-* Updating API documentation URL
+* Updating API documentation URL (#3)
 
 # appler 0.1.3
 

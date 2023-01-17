@@ -1,1 +1,0 @@
-This release fixes example issues on CRAN pointed out by the CRAN team. There were some examples failing to run when offline. I have run the package checks whilst disconnected to the internet and received 0 notes/warnings/errors, so should no longer have this issue.

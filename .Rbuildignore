@@ -5,4 +5,5 @@
 ^CRAN-RELEASE$
 ^cran-comments\.md$
 inst/docs
+^CRAN-SUBMISSION$
 ^data-raw$

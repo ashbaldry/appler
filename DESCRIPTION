@@ -1,16 +1,23 @@
 Package: appler
 Type: Package
 Title: 'Apple App Store' and 'iTunes' Data Extraction
-Version: 0.1.4
+Version: 0.2.0
 Authors@R: person("Ashley", "Baldry", email = "arbaldry91@gmail.com", role = c("aut", "cre"))
 Description: Using 'Apple App Store' <https://www.apple.com/app-store/> web scraping and 'iTunes' API 
-    <https://performance-partners.apple.com/resources/documentation/itunes-store-web-service-search-api.html>
+    <https://performance-partners.apple.com/search-api>
     to extract content information, app ratings and reviews.
 URL: https://github.com/ashbaldry/appler, 
-    https://performance-partners.apple.com/resources/documentation/itunes-store-web-service-search-api.html
+    https://performance-partners.apple.com/search-api
 BugReports: https://github.com/ashbaldry/appler/issues
-Imports: httr, jsonlite, rvest, glue, xml2
-Suggests: testthat (>= 3.0.0), curl
+Depends: R (>= 2.10)
+Imports: httr, jsonlite, rvest
+Suggests: 
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    covr
 License: GPL-2
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.2
+VignetteBuilder: knitr
+LazyData: true

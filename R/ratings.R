@@ -13,14 +13,24 @@
 #' @return A 5 row data.frame with the split of 1-5 stars given rounded to the nearest percent
 #'
 #' @examplesIf interactive()
-#' # Look up ratings split for Apollo in the UK
-#' get_apple_rating_split(979274575, "gb")
+#' # Search for GitHub in App Store in the UK
+#' country_id <- "gb"
+#' github_search_results <- search_apple(
+#'   term = "GitHub",
+#'   country = country_id,
+#'   media = "software"
+#' )
+#'
+#' # Look up app store rating split for GitHub in the UK
+#' # (App ID found in trackId column of github_search_results)
+#' get_apple_rating_split(1477376905, country_id)
 #'
 #' @export
 get_apple_rating_split <- function(id, country = "us") {
   if (nchar(country) != 2) stop("Country must be a 2 digit ISO code")
 
-  req <- httr::GET(glue::glue("https://apps.apple.com/{country}/app/id{id}"))
+  url <- sprintf("https://apps.apple.com/%s/app/id%s", country, id)
+  req <- httr::GET(url)
   httr::stop_for_status(req)
 
   res <- httr::content(req)

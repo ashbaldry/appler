@@ -23,7 +23,16 @@ For overall rating and count, use \code{\link{lookup_apple}}
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Look up ratings split for Apollo in the UK
-get_apple_rating_split(979274575, "gb")
+# Search for GitHub in App Store in the UK
+country_id <- "gb"
+github_search_results <- search_apple(
+  term = "GitHub",
+  country = country_id,
+  media = "software"
+)
+
+# Look up app store rating split for GitHub in the UK
+# (App ID found in trackId column of github_search_results)
+get_apple_rating_split(1477376905, country_id)
 \dontshow{\}) # examplesIf}
 }
