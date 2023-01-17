@@ -6,9 +6,7 @@ Authors@R: person("Ashley", "Baldry", email = "arbaldry91@gmail.com", role = c("
 Description: Using 'Apple App Store' <https://www.apple.com/app-store/> web scraping and 'iTunes' API 
     <https://performance-partners.apple.com/search-api>
     to extract content information, app ratings and reviews.
-URL: https://github.com/ashbaldry/appler,
-    https://performance-partners.apple.com/search-api,
-    https://ashbaldry.github.io/appler/
+URL: https://ashbaldry.github.io/appler/, https://performance-partners.apple.com/search-api
 BugReports: https://github.com/ashbaldry/appler/issues
 Depends: R (>= 2.10)
 Imports: httr, jsonlite, rvest
@@ -19,6 +17,6 @@ Suggests:
     covr
 License: GPL-2
 Encoding: UTF-8
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 LazyData: true

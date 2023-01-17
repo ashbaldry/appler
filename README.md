@@ -1,12 +1,11 @@
+# appler
 
-## appler
+<img src="man/figures/appler.png" width="120" align="right"/>
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/ashbaldry/appler/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ashbaldry/appler/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/ashbaldry/appler/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ashbaldry/appler?branch=main)
 <!-- badges: end -->
-
-<img src="man/figures/appler.png" height="200" align="right"/>
 
 ## Introduction
 
