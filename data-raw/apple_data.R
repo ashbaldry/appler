@@ -26,7 +26,7 @@ itunes_artists <- data.frame(
     471744
   )
 )
-save(itunes_artists, file = "data/itunes_artists.rda", compress = "bzip2", version = 3)
+save(itunes_artists, file = "data/itunes_artists.rda", compress = "bzip2", version = 2)
 
 # Apple app store ---------------------------------------------------------
 # Develop > Top Free Apps (iPhone)
