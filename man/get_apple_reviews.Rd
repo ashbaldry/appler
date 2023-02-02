@@ -35,7 +35,7 @@ apps, the top 500 may not match the top 500 most recent}
 \value{
 A \code{data.frame} of the extracted reviews, containing:
 \itemize{
-\item{\code{id}}{The reveiw ID}
+\item{\code{id}}{The review ID}
 \item{\code{review_time}}{The time the review was posted on the App Store}
 \item{\code{author}}{The username of the reviewer}
 \item{\code{app_version}}{The version of the application that was installed when reviewing the application}
