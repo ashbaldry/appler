@@ -187,27 +187,34 @@ there will be a 400 error.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">github_reviews</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_apple_reviews.html">get_apple_reviews</a></span><span class="op">(</span><span class="va">github_app_id</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">github_reviews</span><span class="op">)</span></span>
-<span><span class="co">#&gt;           id         review_time             author app_version</span></span>
-<span><span class="co">#&gt; 1 9500797135 2023-01-12 23:18:20      nokiapureview      1.95.0</span></span>
-<span><span class="co">#&gt; 2 9493878837 2023-01-11 00:34:31       superToasted      1.95.0</span></span>
-<span><span class="co">#&gt; 3 9470048234 2023-01-04 11:47:12 wouda thought that      1.94.0</span></span>
-<span><span class="co">#&gt; 4 9467982024 2023-01-03 22:00:34     James P 183659      1.94.0</span></span>
-<span><span class="co">#&gt; 5 9416273138 2022-12-20 12:53:20           razemiah      1.93.0</span></span>
-<span><span class="co">#&gt; 6 9414966231 2022-12-20 03:35:45            bryceco      1.93.0</span></span>
-<span><span class="co">#&gt;                                 title rating</span></span>
-<span><span class="co">#&gt; 1              Star button is too big      4</span></span>
-<span><span class="co">#&gt; 2                       no clone link      1</span></span>
-<span><span class="co">#&gt; 3                               Gists      2</span></span>
-<span><span class="co">#&gt; 4 Incredible well designed for mobile      5</span></span>
-<span><span class="co">#&gt; 5              Improving all the time      5</span></span>
-<span><span class="co">#&gt; 6                         Bugs galore      2</span></span>
-<span><span class="co">#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       review</span></span>
-<span><span class="co">#&gt; 1                                                                                                                                                                                                                                                                                                                                                                                                 Always touch star button when scrolling repo list.Please decrease the size of star button.</span></span>
-<span><span class="co">#&gt; 2                                                                                                                                                                                     The mobile all and mobile website decided to omit the clone link of all repos. I am trying to use the app to install some drivers on a linux machine with no browser to request a desktop version. Because of this i am unable to use github to get the most basic of information i need to use a repo</span></span>
-<span><span class="co">#&gt; 3                                                                                                                                                                                                                                                                                                                                                                                                                                                  No way, that I can find, to access gists.</span></span>
-<span><span class="co">#&gt; 4                                                                                                                                                                                                                                                                                                 Given that it makes so much sense for me to interact with GitHub on my computer the majority of the time, I wasn’t expecting the mobile app to be so nice and easy to use. It’s beautiful.</span></span>
-<span><span class="co">#&gt; 5                                                                                                                                                                                                                                                                                                                                   The app continues to improve and become a better experience. The features that are released actually work. Can’t wait to see the continued improvements!</span></span>
-<span><span class="co">#&gt; 6 I generally use the website instead of this app because the functionality is pretty limited, and too often there’s something I want to do that the app simply does not support or supports poorly because of bugs. \n\nFor example if you want to search issues from a particular author it only lets you filter on collaborators. Or if you’re reviewing a commit and select “Jump to file” it opens a page that shows the file name and nothing else. Stupid bugs that are very obvious.</span></span></code></pre></div>
+<span><span class="co">#&gt;           id         review_time            author app_version</span></span>
+<span><span class="co">#&gt; 1 9543515447 2023-01-24 21:15:17 🍓kianakooshesh🍓      1.97.0</span></span>
+<span><span class="co">#&gt; 2 9539504245 2023-01-23 17:27:45       MikeMcqocjc      1.96.0</span></span>
+<span><span class="co">#&gt; 3 9521163486 2023-01-18 15:05:35            fitzoh      1.96.0</span></span>
+<span><span class="co">#&gt; 4 9515721565 2023-01-17 01:29:12  TheWorstSoftware      1.95.0</span></span>
+<span><span class="co">#&gt; 5 9500797135 2023-01-12 23:18:20     nokiapureview      1.95.0</span></span>
+<span><span class="co">#&gt; 6 9493878837 2023-01-11 00:34:31      superToasted      1.95.0</span></span>
+<span><span class="co">#&gt;                                                                     title</span></span>
+<span><span class="co">#&gt; 1                                               Explore page doesn’t load</span></span>
+<span><span class="co">#&gt; 2 I’m new to coding and it’s like starting into the sun it hurts my brain</span></span>
+<span><span class="co">#&gt; 3                       Please let us manage multiple GitHub.com accounts</span></span>
+<span><span class="co">#&gt; 4                                      They actually use version history!</span></span>
+<span><span class="co">#&gt; 5                                                  Star button is too big</span></span>
+<span><span class="co">#&gt; 6                                                           no clone link</span></span>
+<span><span class="co">#&gt;   rating</span></span>
+<span><span class="co">#&gt; 1      4</span></span>
+<span><span class="co">#&gt; 2      3</span></span>
+<span><span class="co">#&gt; 3      3</span></span>
+<span><span class="co">#&gt; 4      5</span></span>
+<span><span class="co">#&gt; 5      4</span></span>
+<span><span class="co">#&gt; 6      1</span></span>
+<span><span class="co">#&gt;                                                                                                                                                                                                                                                                                                          review</span></span>
+<span><span class="co">#&gt; 1                                                                             I’ve been using GitHub for a while now and I loved it!\nBut recently when I click on the explore page it doesn’t load and gives an error, unfortunately this issue wasn’t solved with the latest update which was released today.</span></span>
+<span><span class="co">#&gt; 2 I want to learn how to code because my ex off 13 years started seeing a guy who is very good at coding and was able to come how tunnel into my phone and clone everything he has since walked away with all my info and $500 out of my bank accounts i need to learn how to code to understand this new world</span></span>
+<span><span class="co">#&gt; 3                                                                                                                                      I like the app, but have major usability issues due to having separate work and personal GitHub.com accounts.\n\nPlease find a way to allow us to use multiple accounts.</span></span>
+<span><span class="co">#&gt; 4                                                They actually use the version history instead of just putting nonsense or marketing info!! \nPlus the updates they do do, have a purpose! \nIt’s not as robust as a browser, or even cmd, but it works great and honest has only gotten better over the years.</span></span>
+<span><span class="co">#&gt; 5                                                                                                                                                                                                                    Always touch star button when scrolling repo list.Please decrease the size of star button.</span></span>
+<span><span class="co">#&gt; 6        The mobile all and mobile website decided to omit the clone link of all repos. I am trying to use the app to install some drivers on a linux machine with no browser to request a desktop version. Because of this i am unable to use github to get the most basic of information i need to use a repo</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="ratings">Ratings<a class="anchor" aria-label="anchor" href="#ratings"></a>
