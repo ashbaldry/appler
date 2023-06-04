@@ -1,26 +1,25 @@
-testthat::context("get_apple_rating_split")
+skip_if_offline("apps.apple.com")
+# Reference: App ID 979274575 is Apollo for Reddit
 
-testthat::skip_if_offline("apps.apple.com")
-
-testthat::test_that("Simple ratings search returns data.frame", {
+test_that("Simple ratings search returns data.frame", {
   res <- tryCatch(
     get_apple_rating_split(979274575, "gb"),
     error = function(e) NULL
   )
 
-  testthat::skip_if(
+  skip_if(
     is.null(res),
     "App may no longer be available in the App Store"
   )
 
-  testthat::expect_is(res, "data.frame")
-  testthat::expect_equal(nrow(res), 5)
+  expect_s3_class(res, "data.frame")
+  expect_identical(nrow(res), 5L)
 })
 
-testthat::test_that("Non-existent ID returns error", {
-  testthat::expect_error(get_apple_rating_split(1, "gb"))
+test_that("Non-existent ID returns error", {
+  expect_error(get_apple_rating_split(1, "gb"))
 })
 
-testthat::test_that("Non-existent country returns error", {
-  testthat::expect_error(get_apple_rating_split(1, "gbsdsds"))
+test_that("Non-existent country returns error", {
+  expect_error(get_apple_rating_split(1, "gbsdsds"))
 })

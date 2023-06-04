@@ -62,7 +62,7 @@ search_apple <- function(term, country = NULL, media = NULL, entity = NULL, attr
   }
 
   lang <- match.arg(lang)
-  explicit = match.arg(explicit)
+  explicit <- match.arg(explicit)
 
   query <- list(
     term = gsub(" ", "+", paste(term, collapse = "+")),

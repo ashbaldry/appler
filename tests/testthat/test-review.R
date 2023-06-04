@@ -12,7 +12,7 @@ test_that("Simple reviews search returns data.frame", {
     "App may no longer be available in the App Store"
   )
 
-  expect_is(res, "data.frame")
+  expect_s3_class(res, "data.frame")
 })
 
 test_that("Reviews can pull by most helpful", {
@@ -48,7 +48,7 @@ test_that("Multi page reviews search returns data.frame", {
   )
 
   expect_is(res, "data.frame")
-  expect_equal(nrow(res), 500)
+  expect_identical(nrow(res), 500L)
 })
 
 test_that("Non-existent ID returns `NULL`", {
