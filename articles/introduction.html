@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">appler</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -187,34 +187,27 @@ there will be a 400 error.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">github_reviews</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_apple_reviews.html">get_apple_reviews</a></span><span class="op">(</span><span class="va">github_app_id</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">github_reviews</span><span class="op">)</span></span>
-<span><span class="co">#&gt;           id         review_time            author app_version</span></span>
-<span><span class="co">#&gt; 1 9543515447 2023-01-24 21:15:17 🍓kianakooshesh🍓      1.97.0</span></span>
-<span><span class="co">#&gt; 2 9539504245 2023-01-23 17:27:45       MikeMcqocjc      1.96.0</span></span>
-<span><span class="co">#&gt; 3 9521163486 2023-01-18 15:05:35            fitzoh      1.96.0</span></span>
-<span><span class="co">#&gt; 4 9515721565 2023-01-17 01:29:12  TheWorstSoftware      1.95.0</span></span>
-<span><span class="co">#&gt; 5 9500797135 2023-01-12 23:18:20     nokiapureview      1.95.0</span></span>
-<span><span class="co">#&gt; 6 9493878837 2023-01-11 00:34:31      superToasted      1.95.0</span></span>
-<span><span class="co">#&gt;                                                                     title</span></span>
-<span><span class="co">#&gt; 1                                               Explore page doesn’t load</span></span>
-<span><span class="co">#&gt; 2 I’m new to coding and it’s like starting into the sun it hurts my brain</span></span>
-<span><span class="co">#&gt; 3                       Please let us manage multiple GitHub.com accounts</span></span>
-<span><span class="co">#&gt; 4                                      They actually use version history!</span></span>
-<span><span class="co">#&gt; 5                                                  Star button is too big</span></span>
-<span><span class="co">#&gt; 6                                                           no clone link</span></span>
-<span><span class="co">#&gt;   rating</span></span>
-<span><span class="co">#&gt; 1      4</span></span>
-<span><span class="co">#&gt; 2      3</span></span>
-<span><span class="co">#&gt; 3      3</span></span>
-<span><span class="co">#&gt; 4      5</span></span>
-<span><span class="co">#&gt; 5      4</span></span>
-<span><span class="co">#&gt; 6      1</span></span>
-<span><span class="co">#&gt;                                                                                                                                                                                                                                                                                                          review</span></span>
-<span><span class="co">#&gt; 1                                                                             I’ve been using GitHub for a while now and I loved it!\nBut recently when I click on the explore page it doesn’t load and gives an error, unfortunately this issue wasn’t solved with the latest update which was released today.</span></span>
-<span><span class="co">#&gt; 2 I want to learn how to code because my ex off 13 years started seeing a guy who is very good at coding and was able to come how tunnel into my phone and clone everything he has since walked away with all my info and $500 out of my bank accounts i need to learn how to code to understand this new world</span></span>
-<span><span class="co">#&gt; 3                                                                                                                                      I like the app, but have major usability issues due to having separate work and personal GitHub.com accounts.\n\nPlease find a way to allow us to use multiple accounts.</span></span>
-<span><span class="co">#&gt; 4                                                They actually use the version history instead of just putting nonsense or marketing info!! \nPlus the updates they do do, have a purpose! \nIt’s not as robust as a browser, or even cmd, but it works great and honest has only gotten better over the years.</span></span>
-<span><span class="co">#&gt; 5                                                                                                                                                                                                                    Always touch star button when scrolling repo list.Please decrease the size of star button.</span></span>
-<span><span class="co">#&gt; 6        The mobile all and mobile website decided to omit the clone link of all repos. I am trying to use the app to install some drivers on a linux machine with no browser to request a desktop version. Because of this i am unable to use github to get the most basic of information i need to use a repo</span></span></code></pre></div>
+<span><span class="co">#&gt;           id         review_time       author app_version</span></span>
+<span><span class="co">#&gt; 1 9988936382 2023-06-01 20:34:32       CK C l     1.115.0</span></span>
+<span><span class="co">#&gt; 2 9986903668 2023-06-01 08:07:58      rewaoir     1.115.0</span></span>
+<span><span class="co">#&gt; 3 9979176001 2023-05-30 01:12:28     Rellalrs     1.114.0</span></span>
+<span><span class="co">#&gt; 4 9979029734 2023-05-30 00:02:16    walkccray     1.114.0</span></span>
+<span><span class="co">#&gt; 5 9972808908 2023-05-28 04:07:48 lllrfffaegaf     1.114.0</span></span>
+<span><span class="co">#&gt; 6 9972808301 2023-05-28 04:07:32   frfraengef     1.114.0</span></span>
+<span><span class="co">#&gt;                                                        title rating</span></span>
+<span><span class="co">#&gt; 1                                                        Ann      3</span></span>
+<span><span class="co">#&gt; 2                                  The first time you have a      5</span></span>
+<span><span class="co">#&gt; 3                                   The only way I could see      5</span></span>
+<span><span class="co">#&gt; 4 Adjust Golang Tab Width to 2 for Better Mobile Readability      5</span></span>
+<span><span class="co">#&gt; 5                                             The only way I      5</span></span>
+<span><span class="co">#&gt; 6                                        The kids will get a      5</span></span>
+<span><span class="co">#&gt;                                                                                                                                                                                                                                                                                                                                    review</span></span>
+<span><span class="co">#&gt; 1                                                                                                                                                                                                                                                                                                                           I\nMcRae\nL x</span></span>
+<span><span class="co">#&gt; 2                                                                                                                                                                                                                                                                                                                  I’m so happy you found</span></span>
+<span><span class="co">#&gt; 3                                                                                                                                                                                                                                                                                                                  I’m so happy you found</span></span>
+<span><span class="co">#&gt; 4 I hope this message finds you well. I am writing to provide feedback and make a feature request regarding the tab width for Golang code in the GitHub iOS app. As a mobile user, I believe that offering the option to adjust the tab width to 2 would greatly enhance the readability and usability of Golang code on smaller screens.</span></span>
+<span><span class="co">#&gt; 5                                                                                                                                                                                                                                                                                                                          The only way I</span></span>
+<span><span class="co">#&gt; 6                                                                                                                                                                                                                                                                                                                   We will have the best</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="ratings">Ratings<a class="anchor" aria-label="anchor" href="#ratings"></a>
