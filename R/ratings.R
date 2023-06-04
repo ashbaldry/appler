@@ -35,9 +35,6 @@ get_apple_rating_split <- function(id, country = "us") {
 
   res <- httr::content(req)
 
-  ovr_parent <- rvest::html_node(res, ".we-customer-ratings__averages__display")
-  ovr_rating <- as.numeric(sub(",", ".", rvest::html_text(ovr_parent)))
-
   rating_bars <- rvest::html_nodes(res, ".we-star-bar-graph__row")
   rating_vals <- lapply(rating_bars, function(x) {
     rating <- rvest::html_attr(rvest::html_children(x)[1], "class")

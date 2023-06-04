@@ -50,5 +50,5 @@ get_apple_chart_postion(id = xcode$app_id, "ca")
 
 get_apple_rating_split(id = xcode$app_id, country = "ca")
 
-app_reviews <- get_apple_reviews( xcode$app_id, "ca", all_results = TRUE)
+app_reviews <- get_apple_reviews(xcode$app_id, "ca", all_results = TRUE)
 head(app_reviews)
