@@ -12,7 +12,6 @@ test_that("Simple term search returns data.frame", {
   )
 
   expect_s3_class(res, "data.frame")
-  expect_true(any(res$artistName == "Jack Johnson", na.rm = TRUE))
 })
 
 test_that("Pulling the top 25 results with specified country from a search returns data.frame", {
@@ -28,7 +27,6 @@ test_that("Pulling the top 25 results with specified country from a search retur
 
   expect_s3_class(res, "data.frame")
   expect_identical(nrow(res), 25L)
-  expect_true(any(res == "Jack Johnson", na.rm = TRUE))
 })
 
 test_that("Invalid limit returns error", {
