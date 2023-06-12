@@ -12,9 +12,10 @@ Depends: R (>= 2.10)
 Imports: httr, jsonlite, rvest
 Suggests: 
     testthat (>= 3.0.0),
+    curl,
+    covr,
     knitr,
-    rmarkdown,
-    covr
+    rmarkdown
 License: GPL-2
 Encoding: UTF-8
 RoxygenNote: 7.2.3
